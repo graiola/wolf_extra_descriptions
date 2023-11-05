@@ -1,0 +1,70 @@
+wolf_controller:
+  type: wolf_controller/Controller
+  default_duty_factor: 0.3
+  default_swing_frequency: 4.5
+  default_contact_threshold: 130.0
+  default_base_linear_velocity_x: $(arg max_vel_x)
+  default_base_linear_velocity_y: $(arg max_vel_y)
+  default_base_linear_velocity_z: $(arg max_vel_z)
+  default_base_angular_velocity:  $(arg max_vel_yaw)
+  default_step_height: 0.15
+  default_push_recovery_sensibility: 0.5
+  max_step_height: 0.3
+  max_step_length: 1.0
+  max_base_height: 0.55
+  max_base_roll: 0.523
+  min_base_roll: -0.523
+  max_base_pitch: 0.523
+  min_base_pitch: -0.523
+  estimation_position_type: ground_truth
+  estimation_orientation_type: ground_truth
+  activate_step_reflex: true
+  activate_push_recovery: true
+  publish_odom_msg: $(arg publish_odom_msg)
+  publish_odom_tf: $(arg publish_odom_tf)
+  use_contact_sensors: false
+  min_forces_weight: 0.01
+  min_qddot_weight: 0.1
+
+  gains:
+
+      Kp_arm: {j0: 100.0, j1: 100.0, j2: 100.0, j3: 100.0, j4: 100.0, j5: 100.0}
+      Kd_arm: {j0: 20.0,  j1: 20.0,  j2: 20.0,  j3: 20.0, j4: 20.0, j5: 20.0}
+      Kp_leg: {haa: 100.0, hfe: 100.0, kfe: 1}
+      Kd_leg: {haa: 20.0,  hfe: 20.0,  kfe: 0.1}
+
+      link06:
+          Kp: {x: 1000.0, y: 1000.0, z: 1000.0, roll: 1000.0, pitch: 1000.0, yaw: 1000.0}
+          Kd: {x: 68.0, y: 68.0, z: 68.0, roll: 68.0, pitch: 68.0, yaw: 68.0}
+          weight: 1.0
+          
+      lf_foot:
+          Kp: {x: 1000.0, y: 1000.0, z: 1000.0, roll: 0, pitch: 0, yaw: 0}
+          Kd: {x: 68.0, y: 68.0, z: 68.0, roll: 0, pitch: 0, yaw: 0}
+          weight: 1000.0
+      rf_foot:
+          Kp: {x: 1000.0, y: 1000.0, z: 1000.0, roll: 0, pitch: 0, yaw: 0}
+          Kd: {x: 68.0, y: 68.0, z: 68.0, roll: 0, pitch: 0, yaw: 0}
+          weight: 1000.0
+      rh_foot:
+          Kp: {x: 1000.0, y: 1000.0, z: 1000.0, roll: 0, pitch: 0, yaw: 0}
+          Kd: {x: 68.0, y: 68.0, z: 68.0, roll: 0, pitch: 0, yaw: 0}
+          weight: 1000.0
+      lh_foot:
+          Kp: {x: 1000.0, y: 1000.0, z: 1000.0, roll: 0, pitch: 0, yaw: 0}
+          Kd: {x: 68.0, y: 68.0, z: 68.0, roll: 0, pitch: 0, yaw: 0}
+          weight: 1000.0
+
+      waist:
+          Kp: {x: 0.0, y: 0.0, z: 0.0, roll: 1000.0, pitch: 1000.0, yaw: 1000.0}
+          Kd: {x: 0.0, y: 0.0, z: 0.0, roll: 63.0, pitch: 63.0, yaw: 63.0}
+          weight: 1.0
+
+      CoM:
+          Kp: {x: 200.0, y: 200.0, z: 200.0}
+          Kd: {x: 28.0, y: 28.0, z: 28.0}
+          weight: 1.0
+
+      angular_momentum:
+          weight: 0.1
+

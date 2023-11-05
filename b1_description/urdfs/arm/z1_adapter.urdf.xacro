@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:include filename="$(find z1_description)/urdfs/robot.xacro"/>
+
+<joint name="joint_base_robots" type="fixed">
+       <parent link="trunk"/>
+       <child link="link00"/>
+       <origin xyz="0.18 0.0 0.08" rpy="0 0 0"/>
+</joint>
+
+</robot>
